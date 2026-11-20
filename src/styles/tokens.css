@@ -1,0 +1,114 @@
+/*
+ * Hundo design tokens — THE ONLY place hex values, font families and radii may appear (AGENTS.md §4).
+ *
+ * Status: DRAFT (Phase 0). Extracted from hundopizza.com (Squarespace site styles + custom CSS),
+ * see docs/BRAND.md and brand-report.json. Confirm in DevTools during Phase 1; app-only states
+ * need Hundo approval (Q1.9).
+ */
+
+/* Fonts — self-hosting depends on licence confirmation (Q1.8). Convert to woff2 in Phase 1. */
+@font-face {
+  font-family: "TheMixMono Black";
+  src: url("/brand/fonts/TheMixMono-9-Black_fcd619.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TheMixMono";
+  src: url("/brand/fonts/TheMixMono-5-Regular_465678.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---- Brand palette (from site) ---- */
+  --brand-red: #ec1c24;          /* "bright" section theme bg: hsl(357.7 84.6% 51.8%) — the site's main look */
+  --brand-red-text: #e2131b;     /* derived: red for small text on white, 4.84:1 (AA) */
+  --brand-black: #000000;        /* wordmark, headings on white */
+  --brand-white: #ffffff;
+  --brand-navy: #253551;         /* Squarespace "accent": hsl(218.2 37.3% 23.1%) */
+  --brand-charcoal: #2a2829;     /* Squarespace "darkAccent" (Our Story dark section) */
+  --brand-cream: #e0e0db;        /* Squarespace "lightAccent" */
+
+  /* ---- PRD §14.3 semantic tokens ---- */
+  --brand-primary: var(--brand-red);
+  --brand-secondary: var(--brand-black);
+  --bg: var(--brand-white);
+  --surface: var(--brand-white);
+  --surface-brand: var(--brand-red);     /* hero/header sections; text on it = --text-on-brand */
+  --surface-muted: var(--brand-cream);
+  --text: var(--brand-black);
+  --text-muted: #5c5a5b;                 /* derived, 6.8:1 on white */
+  --text-on-brand: var(--brand-white);   /* only ≥ 18.7px bold / 24px regular (4.41:1) — Q1.9 */
+  --link: var(--brand-red-text);
+  --border: var(--brand-black);          /* site header/section borders are black */
+  --border-subtle: var(--brand-cream);
+
+  /* Buttons: site uses OUTLINE style, primary = square, secondary = pill, 2px stroke.
+     On red sections the outline/text is white; on white sections it is black. */
+  --button-bg: transparent;
+  --button-text: var(--brand-black);
+  --button-border: var(--brand-black);
+  --button-hover-bg: var(--brand-black);
+  --button-hover-text: var(--brand-white);
+  --button-on-brand-text: var(--brand-white);
+  --button-on-brand-border: var(--brand-white);
+  --button-on-brand-hover-bg: var(--brand-white);
+  --button-on-brand-hover-text: var(--brand-red);
+  --button-stroke: 2px;
+  --button-radius-primary: 0px;          /* primary-button-shape-square */
+  --button-radius-secondary: 9999px;     /* secondary-button-shape-pill */
+  --button-padding-y: 1.2em;
+  --button-padding-x: 2.004em;
+  --button-font-size: 1rem;
+  --button-letter-spacing: 0.02em;
+  --button-text-transform: none;
+
+  /* ---- Typography ---- */
+  --font-heading: "TheMixMono Black", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-body: "TheMixMono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-button: var(--font-heading);
+  --font-nav: var(--font-heading);
+  --font-size-base: 16px;
+  --font-size-h1: 4rem;      /* site desktop; scale down on mobile in Tailwind config */
+  --font-size-h2: 2.8rem;
+  --font-size-h3: 2.2rem;
+  --font-size-h4: 1.6rem;
+  --font-size-large: 1.5rem;
+  --font-size-body: 1rem;
+  --line-height-heading: 1.4;
+  --line-height-body: 1.7;
+  --letter-spacing-heading: 0;
+  --letter-spacing-body: 0;
+
+  /* ---- Layout ---- */
+  --radius-none: 0px;        /* site imagery and text blocks are square-cornered */
+  --radius-pill: 9999px;
+  --radius-sm: 6.4px;        /* Squarespace "rounded" preset — use only for inputs/cards if Hundo agrees */
+  --header-height: 72px;     /* confirm in DevTools */
+  --content-max-width: 1280px;
+  --tap-target-min: 44px;
+  --banner-aspect: 16 / 9;   /* site banners are 2048×1152 / 2500×1406 */
+
+  /* ---- App-only states (derived — need Hundo approval, Q1.9) ---- */
+  --veg: #0f8a3c;            /* regulatory veg symbol green */
+  --non-veg: #7a3e1d;        /* regulatory non-veg symbol brown */
+  --success: var(--brand-navy);
+  --warning: #b45309;
+  --error: #c61118;          /* deeper than brand red so errors read differently; 6.0:1 */
+  --disabled-bg: var(--brand-cream);
+  --disabled-text: #77757a;
+  --focus-ring: var(--brand-navy);
+
+  /* Order status chips: brand colors + an icon each (PRD §14.4), never color alone */
+  --status-placed: var(--brand-navy);
+  --status-confirmed: var(--brand-navy);
+  --status-preparing: var(--brand-red-text);
+  --status-ready: var(--brand-red-text);
+  --status-out-for-delivery: var(--brand-black);
+  --status-delivered: var(--brand-black);
+  --status-cancelled: var(--disabled-text);
+  --status-payment-failed: var(--error);
+}
