@@ -37,6 +37,20 @@ Decision: Draft tokens in `src/styles/tokens.css` come from the site's Squarespa
 its custom CSS (see docs/BRAND.md). They are drafts until confirmed in DevTools and approved by
 Hundo (Q1.8–Q1.10).
 
+### D-0.4 — Git repository   (partly answers Q1.3)
+Date: 2026-11-20 · Decided by: Anurag Verma
+Decision: Code lives at https://github.com/anuragverma57/Hundo-mvp (public), default branch `main`.
+This clone pushes as `anuragverma57` through a repo-local credential helper
+(`gh auth token --user anuragverma57`), because the machine's active `gh` account is different.
+Still open for Phase 1: PR-per-phase workflow, GitHub Actions CI.
+
+### D-0.5 — Commercial font files not committed   (technical)
+Date: 2026-11-20 · Decided by: agent
+Decision: `public/brand/fonts/` (TheMixMono, LucasFonts) is gitignored, because the repo is public and
+the font licence doesn't allow redistribution. Each machine re-downloads the fonts with
+`node scripts/scrape-brand-assets.mjs`. Phase 1 must decide how fonts reach the Vercel build
+(private storage, a private repo, or the approved fallback font). Linked to Q1.8.
+
 ---
 
 ## Phase 1 — Foundation
